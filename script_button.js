@@ -1,4 +1,107 @@
-document.addEventListener('DOMContentLoaded', function() {
+<style>
+.age-verification {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.age-verification-content {
+  background: black;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #374151;
+  width: 24rem;
+  position: relative;
+}
+
+.age-verification-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+}
+
+.age-verification-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #fbbf24;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.age-verification-subtitle {
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.age-verification-inputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.age-verification-input {
+  background: black;
+  border: 1px solid #374151;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  color: white;
+  width: 100%;
+}
+
+.age-verification-button {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  background: white;
+  border: none;
+  transition: background-color 0.2s;
+}
+
+.age-verification-button.green {
+  background: #22c55e;
+}
+
+.age-verification-error {
+  color: #ef4444;
+  text-align: center;
+  margin-bottom: 1rem;
+  display: none;
+}
+
+.age-verification-footer {
+  color: #9ca3af;
+  font-size: 0.875rem;
+  text-align: center;
+}
+</style>
+<div id="ageVerification" class="age-verification" style="display: none;">
+  <div class="age-verification-content">
+    <button class="age-verification-close">&times;</button>
+    <h2 class="age-verification-title">Are you over 18 years old?</h2>
+    <p class="age-verification-subtitle">Please verify your age to enter this site.</p>
+    <div class="age-verification-inputs">
+      <input type="number" placeholder="MM" class="age-verification-input" id="month">
+      <input type="number" placeholder="DD" class="age-verification-input" id="day">
+      <input type="number" placeholder="YYYY" class="age-verification-input" id="year">
+    </div>
+    <button class="age-verification-button" id="verifyButton">I am 18+</button>
+    <p class="age-verification-error" id="error"></p>
+    <p class="age-verification-footer">By entering this website, you agree to our terms of use and privacy policy.</p>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
   if (localStorage.getItem('ageVerified') === 'true') {
     return;
   }
@@ -64,3 +167,4 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+</script>
